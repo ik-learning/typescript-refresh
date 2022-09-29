@@ -30,7 +30,6 @@
 ## Contents
 
 - [Create](#create)
-- [Resources](#resources)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -49,4 +48,3 @@
 
 [governance.link-checker.badge]: https://github.com/ik-learning/typescript-refresh/actions/workflows/governance.links-checker.yml/badge.svg
 [governance.link-checker.status]: https://github.com/ik-learning/typescript-refresh/actions/workflows/governance.links-checker.yml
-
