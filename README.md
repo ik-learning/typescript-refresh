@@ -34,6 +34,7 @@
 
 ```sh
 npm install -g typescript
+npm init
 ```
 
 ## Resources
@@ -41,6 +42,7 @@ npm install -g typescript
 - [Official Documentation](https://www.typescriptlang.org/docs/)
 - [Migrate from JS](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
 - [Modules](https://www.typescriptlang.org/docs/handbook/2/modules.html)
+- [Grunt](https://gruntjs.com/)
 
 ## Courses
 
