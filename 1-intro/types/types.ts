@@ -19,3 +19,7 @@ var cat: Starks = Starks.Catlyn;
 function getName() : string {
   return "some text"
 }
+
+function log(): void {
+  console.log("Winder is coming");
+}
