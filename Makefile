@@ -14,3 +14,7 @@ hooks: ## Setup pre commit.
 
 validate: ## Validate files with pre-commit hooks
 	@pre-commit run --all-files
+
+cleanup: ## Cleanup folders
+	@find . -type d -name "node_modules" -prune -exec rm -rf {} \;
+# 	@find . -type f -name "*.lock" -prune -exec rm  {} \;

@@ -1,14 +1,5 @@
 # Base Blueprint
 
-## Courses
-
-- [1: Introduction to TypeScript](https://www.udemy.com/course/typescript/)
-- [2: Understand Typescript](https://www.udemy.com/course/understanding-typescript/)
-
-### Not considering but great coursers
-
-- [Javascript](https://learn.javascript.ru/)
-
 ---
 
 ![](https://img.shields.io/github/commit-activity/m/ik-learning/typescript-refresh)
@@ -29,11 +20,36 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 ## Contents
 
+- [Commands](#commands)
+- [Resources](#resources)
+- [Courses](#courses)
+  - [Not considering but great coursers](#not-considering-but-great-coursers)
 - [Create](#create)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ---
+
+## Commands
+
+```sh
+npm install -g typescript
+```
+
+## Resources
+
+- [Official Documentation](https://www.typescriptlang.org/docs/)
+- [Migrate from JS](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
+- [Modules](https://www.typescriptlang.org/docs/handbook/2/modules.html)
+
+## Courses
+
+- [1: Introduction to TypeScript](https://www.udemy.com/course/typescript/)
+- [2: Understand Typescript](https://www.udemy.com/course/understanding-typescript/)
+
+### Not considering but great coursers
+
+- [Javascript](https://learn.javascript.ru/)
 
 ## Create
 
