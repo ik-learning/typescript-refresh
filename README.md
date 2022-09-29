@@ -1,13 +1,22 @@
 # Base Blueprint
 
+## Courses
+
+- [1: Introduction to TypeScript](https://www.udemy.com/course/typescript/)
+- [2: Understand Typescript](https://www.udemy.com/course/understanding-typescript/)
+
+### Not considering but great coursers
+
+- [Javascript](https://learn.javascript.ru/)
+
 ---
 
-![](https://img.shields.io/github/commit-activity/m/accelerator-blueprints/base-blueprint)
-![](https://img.shields.io/github/last-commit/accelerator-blueprints/base-blueprint)
+![](https://img.shields.io/github/commit-activity/m/ik-learning/typescript-refresh)
+![](https://img.shields.io/github/last-commit/ik-learning/typescript-refresh)
 [![](https://img.shields.io/github/license/ivankatliarchuk/.github)](https://github.com/ivankatliarchuk/.github/LICENCE)
-[![](https://img.shields.io/github/languages/code-size/accelerator-blueprints/base-blueprint)](https://github.com/accelerator-blueprints/base-blueprint)
-[![](https://img.shields.io/github/repo-size/accelerator-blueprints/base-blueprint)](https://github.com/accelerator-blueprints/base-blueprint)
-![](https://img.shields.io/github/languages/top/accelerator-blueprints/base-blueprint?color=green&logo=markdown&logoColor=blue)
+[![](https://img.shields.io/github/languages/code-size/ik-learning/typescript-refresh)](https://github.com/ik-learning/typescript-refresh)
+[![](https://img.shields.io/github/repo-size/ik-learning/typescript-refresh)](https://github.com/ik-learning/typescript-refresh)
+![](https://img.shields.io/github/languages/top/ik-learning/typescript-refresh?color=green&logo=markdown&logoColor=blue)
 
 ---
 
@@ -32,12 +41,12 @@
 [**Create a repository using this template →**][template.generate]
 
 <!-- resources -->
-[template.generate]: https://github.com/accelerator-blueprints/base-blueprint/generate
+[template.generate]: https://github.com/ik-learning/typescript-refresh/generate
 [code-style.badge]: https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square
 
-[governance-badge]: https://github.com/accelerator-blueprints/base-blueprint/actions/workflows/governance.bot.yml/badge.svg
-[governance-action]: https://github.com/accelerator-blueprints/base-blueprint/actions/workflows/governance.bot.yml
+[governance-badge]: https://github.com/ik-learning/typescript-refresh/actions/workflows/governance.bot.yml/badge.svg
+[governance-action]: https://github.com/ik-learning/typescript-refresh/actions/workflows/governance.bot.yml
 
-[governance.link-checker.badge]: https://github.com/accelerator-blueprints/base-blueprint/actions/workflows/governance.links-checker.yml/badge.svg
-[governance.link-checker.status]: https://github.com/accelerator-blueprints/base-blueprint/actions/workflows/governance.links-checker.yml
+[governance.link-checker.badge]: https://github.com/ik-learning/typescript-refresh/actions/workflows/governance.links-checker.yml/badge.svg
+[governance.link-checker.status]: https://github.com/ik-learning/typescript-refresh/actions/workflows/governance.links-checker.yml
 
