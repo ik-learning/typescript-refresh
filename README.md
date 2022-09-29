@@ -46,7 +46,7 @@ npm init
 
 ## Courses
 
-- [1: Introduction to TypeScript](https://www.udemy.com/course/typescript/)
+- [1v: Introduction to TypeScript](https://www.udemy.com/course/typescript/)
 - [2: Understand Typescript](https://www.udemy.com/course/understanding-typescript/)
 
 ### Not considering but great coursers
