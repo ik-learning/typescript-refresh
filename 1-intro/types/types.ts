@@ -23,3 +23,7 @@ function getName() : string {
 function log(): void {
   console.log("Winder is coming");
 }
+
+// read only array
+let a: number[] = [1, 2, 3, 4];
+let ro: ReadonlyArray<number> = a;
