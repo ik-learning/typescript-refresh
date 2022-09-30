@@ -31,6 +31,7 @@
     "cacheDirectory": ".jest/cache"
   },
   "dependencies": {
+    "@gitbeaker/node": "21.3.0",
     "gitlab": "^10.0.1",
     "debug": "^4.1.1",
     "http-proxy-agent": "^2.1.0",
