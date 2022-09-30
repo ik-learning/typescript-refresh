@@ -257,3 +257,5 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/git,macos,linux,windows,visualstudiocode,node
 **/.tscache
+**/test-results.json
+**/.jest
