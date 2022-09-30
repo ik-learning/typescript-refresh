@@ -46,7 +46,6 @@
     "@types/async-retry": "^1.4.1",
     "@types/debug": "0.0.30",
     "@types/http-proxy-agent": "^2.0.1",
-    "@types/nock": "^10.0.3",
     "@types/node": "^10.11.3",
     "@types/node-fetch": "^2.5.12",
     "@types/p-limit": "^2.0.0",
