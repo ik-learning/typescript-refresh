@@ -11,7 +11,7 @@ import {
   // GitLabRepositoryCompare,
   GitLabMR,
   GitLabUserProfile,
-  // GitLabApproval,
+  GitLabApproval,
 } from "../deps/dsl/GitLabDSL"
 
 // import { Gitlab } from "gitlab"
@@ -82,7 +82,6 @@ class GitLabAPI {
   // as GitLabUserProfile
   getUser = async (): Promise<GitLabUserProfile> => {
     const user = (await this.api.Users.current()) as GitLabUserProfile
-    console.log(user)
     return user
   }
 
@@ -104,14 +103,15 @@ class GitLabAPI {
   //   return mr
   // }
 
-  // getMergeRequestApprovals = async (): Promise<GitLabApproval> => {
-  //   this.d(`getMergeRequestApprovals for repo: ${this.repoMetadata.repoSlug} pr: ${this.repoMetadata.pullRequestID}`)
-  //   const approvals = (await this.api.MergeRequests.approvals(this.repoMetadata.repoSlug, {
-  //     mergerequestIId: Number(this.repoMetadata.pullRequestID),
-  //   })) as GitLabApproval
-  //   this.d("getMergeRequestApprovals", approvals)
-  //   return approvals
-  // }
+  getMergeRequestApprovals = async (): Promise<GitLabApproval> => {
+    this.d(`getMergeRequestApprovals for repo: ${this.repoMetadata.repoSlug} pr: ${this.repoMetadata.pullRequestID}`)
+    console.log(this.repoMetadata.repoSlug, this.repoMetadata.pullRequestID)
+    const approvals = (await this.api.MergeRequests.approvals(this.repoMetadata.repoSlug, {
+      mergerequestIid: Number(this.repoMetadata.pullRequestID),
+    })) as GitLabApproval
+    this.d("getMergeRequestApprovals", approvals)
+    return approvals
+  }
 
   // getMergeRequestChanges = async (): Promise<GitLabMRChange[]> => {
   //   this.d(`getMergeRequestChanges for repo: ${this.repoMetadata.repoSlug} pr: ${this.repoMetadata.pullRequestID}`)

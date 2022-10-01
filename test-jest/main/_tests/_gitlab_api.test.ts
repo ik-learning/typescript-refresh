@@ -90,4 +90,13 @@ describe("GitLab API", () => {
     const { response } = loadFixture("getUser")
     expect(result).toEqual(response)
   })
+
+  it("getMergeRequestApprovals", async () => {
+    const { nockDone } = await nockBack("getMergeRequestApprovals.json")
+    const result = await api.getMergeRequestApprovals()
+    nockDone()
+    const { response } = loadFixture("getMergeRequestApprovals")
+    expect(result).toEqual(response)
+  })
+
 });
