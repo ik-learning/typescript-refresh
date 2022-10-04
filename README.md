@@ -43,6 +43,7 @@ npm init
 - [Migrate from JS](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
 - [Modules](https://www.typescriptlang.org/docs/handbook/2/modules.html)
 - [Grunt](https://gruntjs.com/)
+- [TS debug with VsCode](https://code.visualstudio.com/docs/typescript/typescript-debugging)
 
 ## Courses
 

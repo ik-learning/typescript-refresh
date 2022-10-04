@@ -259,3 +259,4 @@ $RECYCLE.BIN/
 **/.tscache
 **/test-results.json
 **/.jest
+trash/
