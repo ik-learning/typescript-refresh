@@ -22,7 +22,7 @@ interface Greetable extends Named {
   greet(phrase: string): void;
 }
 
-interface Another {}
+interface Another { }
 
 class Person implements Greetable, Another {
   name?: string;
