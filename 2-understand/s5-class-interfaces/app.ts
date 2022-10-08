@@ -1,9 +1,9 @@
 class Department {
-  public name: string;
   private employees: string[] = [];
 
-  constructor(n: string) {
-    this.name = n;
+  constructor(private readonly id: string, public name: string) {
+    this.id = id;
+    this.name = name;
   }
 
   describe(this: Department) {
@@ -20,11 +20,31 @@ class Department {
   }
 }
 
-const accounting = new Department('Accounting');
+class ITDepartment extends Department {
+  constructor(id: string, public admins: string[]) {
+    super(id, 'IT');
+    this.admins = admins;
+  }
+}
 
-// accounting.employees[2] = 'Weight' cannot access private property
-accounting.addEmployee("Max");
-accounting.addEmployee("John");
+const dep = new ITDepartment('it1', ['John', 'Celvin']);
+console.log(dep)
 
-accounting.describe();
-accounting.printEmployeeInfo();
+class Accounting extends Department {
+  constructor(id: string, private reports: string[]) {
+    super(id, 'Accounting');
+    this.reports = reports;
+  }
+
+  addReport(text: string) {
+    this.reports.push(text);
+  }
+
+  getReports() {
+    console.log(this.reports)
+  }
+}
+
+const acc = new Accounting('it1', []);
+acc.addReport('Something went wrong')
+console.log(acc)
