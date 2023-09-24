@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@gitbeaker/node": "^21.3.0",
+    "@gitbeaker/node": "^35.7.0",
     "gitlab": "^10.0.1"
   }
 }
