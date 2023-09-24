@@ -14,5 +14,8 @@
 ## Commands
 
 ```sh
-deno run app.ts
+$ tsc app.ts
+$ node app.js
+// or
+$ deno run app.ts
 ```
