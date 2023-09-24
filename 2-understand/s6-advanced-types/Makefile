@@ -10,3 +10,6 @@ run-type-guards: ## Run type guards
 
 run-disc-unions: ## Run discriminated unions
 	@deno run disc-union.ts
+
+run-type-casting: ## Run type casting
+	@deno run type-casting.ts
