@@ -18,3 +18,11 @@ validate: ## Validate files with pre-commit hooks
 cleanup: ## Cleanup folders
 	@find . -type d -name "node_modules" -prune -exec rm -rf {} \;
 # 	@find . -type f -name "*.lock" -prune -exec rm  {} \;
+
+DIRECTORY := with-tests/eks-addons
+
+run: ## Run it
+	@scripts/run.sh $(DIRECTORY)
+
+install: ## Install dependencies
+	@scripts/install.sh $(DIRECTORY)
