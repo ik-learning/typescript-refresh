@@ -260,3 +260,6 @@ $RECYCLE.BIN/
 **/test-results.json
 **/.jest
 trash/
+
+.idea/*
+**/node_modules/*

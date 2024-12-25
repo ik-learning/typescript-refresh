@@ -1,0 +1,33 @@
+{
+  releases: [
+    {
+      version: "v2.6.0-eksbuild.1",
+      default: true,
+      compatibleWith: [
+        "1.31",
+        "1.30",
+        "1.29",
+        "1.28",
+        "1.27",
+        "1.26",
+        "1.25",
+        "1.24"
+      ]
+    },
+    {
+      version: "v2.1.2-eksbuild.1",
+      default: true,
+      compatibleWith: [
+        "1.31",
+        "1.30",
+        "1.29",
+        "1.28",
+        "1.27",
+        "1.26",
+        "1.25",
+        "1.24",
+        "1.23"
+      ]
+    }
+  ]
+}

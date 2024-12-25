@@ -1,0 +1,43 @@
+{
+  "$metadata": {
+    "httpStatusCode": 200,
+    "requestId": "f97e6a3c-d085-4afa-abad-e26de2743e01",
+    "attempts": 1,
+    "totalRetryDelay": 0
+  },
+  "clusterVersions": [
+    {
+      "clusterType": "eks",
+      "clusterVersion": "1.31",
+      "defaultPlatformVersion": "eks.15",
+      "defaultVersion": true,
+      "endOfExtendedSupportDate": "2026-11-26T00:00:00.000Z",
+      "endOfStandardSupportDate": "2025-11-26T00:00:00.000Z",
+      "kubernetesPatchVersion": "1.31.3",
+      "releaseDate": "2024-09-26T00:00:00.000Z",
+      "status": "STANDARD_SUPPORT"
+    },
+    {
+      "clusterType": "eks",
+      "clusterVersion": "1.30",
+      "defaultPlatformVersion": "eks.23",
+      "defaultVersion": false,
+      "endOfExtendedSupportDate": "2026-07-23T00:00:00.000Z",
+      "endOfStandardSupportDate": "2025-07-23T00:00:00.000Z",
+      "kubernetesPatchVersion": "1.30.7",
+      "releaseDate": "2024-05-23T00:00:00.000Z",
+      "status": "STANDARD_SUPPORT"
+    },
+    {
+      "clusterType": "eks",
+      "clusterVersion": "1.29",
+      "defaultPlatformVersion": "eks.26",
+      "defaultVersion": false,
+      "endOfExtendedSupportDate": "2026-03-23T00:00:00.000Z",
+      "endOfStandardSupportDate": "2025-03-23T00:00:00.000Z",
+      "kubernetesPatchVersion": "1.29.11",
+      "releaseDate": "2024-01-23T00:00:00.000Z",
+      "status": "STANDARD_SUPPORT"
+    }
+  ]
+}

@@ -1,103 +1,103 @@
-type Admin = {
-  name: string;
-  privileges: string[];
-};
+import {
+  DescribeAddonVersionsCommand,
+  DescribeAddonVersionsCommandInput,
+  AddonVersionInfo,
+  DescribeClusterVersionsCommand,
+  DescribeAddonVersionsCommandOutput,
+  DescribeClusterVersionsResponse,
+  EKSClient, AddonInfo,
+  Compatibility,
+} from '@aws-sdk/client-eks';
 
-type Employee = {
-  name: string;
-  startDate: Date;
-};
+import { logger } from './utils/logger';
 
-// interface ElevatedEmployee extends Employee, Admin {}
+import type { GetReleasesConfig, ReleaseResult } from './utils/types';
+// just to simplify things
+import { Lazy } from './utils/lazy';
 
-type ElevatedEmployee = Admin & Employee;
+import { fromNodeProviderChain } from '@aws-sdk/credential-providers';
 
-const e1: ElevatedEmployee = {
-  name: 'Max',
-  privileges: ['create-server'],
-  startDate: new Date()
-};
+import { EksAddonsFilter } from './schema';
 
-type Combinable = string | number;
-type Numeric = number | boolean;
+// import writeTxoFile from './file'
+// import { boolean } from 'zod';
+// https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/client/eks/command/DescribeAddonVersionsCommand/
+// https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/Package/-aws-sdk-client-eks/Interface/DescribeAddonVersionsCommandInput/
 
-type Universal = Combinable & Numeric;
+// if cluster version not specified return latest cluster default
+class AwsEKSAddonDataSource {
 
-function add(a: Combinable, b: Combinable) {
-  if (typeof a === 'string' || typeof b === 'string') {
-    return a.toString() + b.toString();
-  }
-  return a + b;
-}
+  private readonly clients: Record<string, EKSClient> = {};
 
-type UnknownEmployee = Employee | Admin;
-
-function printEmployeeInformation(emp: UnknownEmployee) {
-  console.log('Name: ' + emp.name);
-  if ('privileges' in emp) {
-    console.log('Privileges: ' + emp.privileges);
-  }
-  if ('startDate' in emp) {
-    console.log('Start Date: ' + emp.startDate);
-  }
-}
-
-printEmployeeInformation({ name: 'Manu', startDate: new Date() });
-
-class Car {
-  drive() {
-    console.log('Driving...');
-  }
-}
-
-class Truck {
-  drive() {
-    console.log('Driving a truck...');
+  constructor() {
   }
 
-  loadCargo(amount: number) {
-    console.log('Loading cargo ...' + amount);
+  // TODO: test me
+  async getReleases({
+                      packageName: serializedFilter
+                    }: GetReleasesConfig): Promise<ReleaseResult | null> {
+    const res = EksAddonsFilter.safeParse(serializedFilter);
+    if (!res.success) {
+      logger.debug(
+        { err: res.error, serializedFilter },
+        'Error parsing eks-addons config.',
+      );
+      return null
+    }
+
+    const filter  = res.data;
+
+    const input: DescribeAddonVersionsCommandInput = {
+      kubernetesVersion: filter?.kubernetesVersion,
+      addonName: filter?.addonName,
+      maxResults: 1,
+    };
+    const cmd = new DescribeAddonVersionsCommand(input)
+    const response : DescribeAddonVersionsCommandOutput = await this.getClient(filter).send(cmd)
+    const addons: AddonInfo[] = response.addons ?? [];
+    return {
+      releases: addons
+        .flatMap((addon : AddonInfo) : AddonVersionInfo[] | undefined => {
+          return addon.addonVersions
+        })
+        .map((versionInfo: AddonVersionInfo | undefined) => ({
+          version: versionInfo?.addonVersion ?? '',
+          default: versionInfo?.compatibilities?.some((comp : Compatibility) : boolean | undefined => comp.defaultVersion) ?? false,
+          compatibleWith : versionInfo?.compatibilities?.flatMap((comp: Compatibility) : string | undefined => comp.clusterVersion)
+        }))
+        .filter((release  ): boolean => {
+          return release.version !== ''
+        })
+        .filter((release  ): boolean => {
+          if (filter.default) {
+            return release.default && release.default == filter.default
+          }
+          return true
+        })
+    };
+  }
+
+  // TODO: test me
+  private getClient({ region, profile }: EksAddonsFilter): EKSClient {
+    const cacheKey = `${region ?? 'default'}#${profile ?? 'default'}`;
+    if (!(cacheKey in this.clients)) {
+      this.clients[cacheKey] = new EKSClient({
+        region: region ?? undefined,
+        credentials: fromNodeProviderChain(profile ? { profile: profile } : undefined)
+      })
+    }
+    return this.clients[cacheKey];
   }
 }
 
-type Vehicle = Car | Truck;
+const eks = new AwsEKSAddonDataSource()
 
-const v1 = new Car();
-const v2 = new Truck();
+const input: readonly string[] = [
+  '{"kubernetesVersion":"1.30","addonName":"vpc-cni"}',
+  '{"addonName":"amazon-cloudwatch-observability", "default":true}'
+];
 
-function useVehicle(vehicle: Vehicle) {
-  vehicle.drive();
-  if (vehicle instanceof Truck) {
-    vehicle.loadCargo(1000);
-  }
-}
-
-useVehicle(v1);
-useVehicle(v2);
-
-interface Bird {
-  type: 'bird';
-  flyingSpeed: number;
-}
-
-interface Horse {
-  type: 'horse';
-  runningSpeed: number;
-}
-
-type Animal = Bird | Horse;
-
-function moveAnimal(animal: Animal) {
-  let speed;
-  switch (animal.type) {
-    case 'bird':
-      speed = animal.flyingSpeed;
-      break;
-    case 'horse':
-      speed = animal.runningSpeed;
-  }
-  console.log('Moving at speed: ' + speed);
-}
-
-moveAnimal({type: 'bird', flyingSpeed: 10});
-
+input.forEach((el) => {
+  const releases: Promise<{ releases: { version: string, default: boolean; compatibleWith: (string | undefined)[] | undefined; }[], }> = eks.getReleases({ packageName: el })
+  releases.then(data => console.log(data))
+})

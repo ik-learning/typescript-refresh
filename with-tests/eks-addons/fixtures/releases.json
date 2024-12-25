@@ -1,0 +1,102 @@
+{
+  releases: [
+    {
+      version: "v1.19.0-eksbuild.1",
+      default: true,
+      compatibleWith: [
+        "1.30"
+      ]
+    },
+    {
+      version: "v1.18.6-eksbuild.1",
+      default: false,
+      compatibleWith: [
+        "1.30"
+      ]
+    },
+    {
+      version: "v1.18.5-eksbuild.1",
+      default: false,
+      compatibleWith: [
+        "1.30"
+      ]
+    },
+    {
+      version: "v1.18.4-eksbuild.1",
+      default: false,
+      compatibleWith: [
+        "1.30"
+      ]
+    },
+    {
+      version: "v1.18.3-eksbuild.3",
+      default: false,
+      compatibleWith: [
+        "1.30"
+      ]
+    },
+    {
+      version: "v1.18.3-eksbuild.2",
+      default: false,
+      compatibleWith: [
+        "1.30"
+      ]
+    },
+    {
+      version: "v1.18.3-eksbuild.1",
+      default: false,
+      compatibleWith: [
+        "1.30"
+      ]
+    },
+    {
+      version: "v1.18.2-eksbuild.1",
+      default: false,
+      compatibleWith: [
+        "1.30"
+      ]
+    },
+    {
+      version: "v1.18.1-eksbuild.3",
+      default: false,
+      compatibleWith: [
+        "1.30"
+      ]
+    },
+    {
+      version: "v1.18.1-eksbuild.1",
+      default: false,
+      compatibleWith: [
+        "1.30"
+      ]
+    },
+    {
+      version: "v1.18.0-eksbuild.1",
+      default: false,
+      compatibleWith: [
+        "1.30"
+      ]
+    },
+    {
+      version: "v1.17.1-eksbuild.1",
+      default: false,
+      compatibleWith: [
+        "1.30"
+      ]
+    },
+    {
+      version: "v1.16.4-eksbuild.2",
+      default: false,
+      compatibleWith: [
+        "1.30"
+      ]
+    },
+    {
+      version: "v1.16.0-eksbuild.1",
+      default: false,
+      compatibleWith: [
+        "1.30"
+      ]
+    }
+  ]
+}
