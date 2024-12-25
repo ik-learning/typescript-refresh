@@ -1,25 +1,21 @@
 import {
+  AddonInfo,
+  AddonVersionInfo,
+  Compatibility,
   DescribeAddonVersionsCommand,
   DescribeAddonVersionsCommandInput,
-  AddonVersionInfo,
-  DescribeClusterVersionsCommand,
   DescribeAddonVersionsCommandOutput,
-  DescribeClusterVersionsResponse,
-  EKSClient, AddonInfo,
-  Compatibility,
+  EKSClient
 } from '@aws-sdk/client-eks';
 
 import { logger } from './utils/logger';
 
 import type { GetReleasesConfig, ReleaseResult } from './utils/types';
-// just to simplify things
-import { Lazy } from './utils/lazy';
 
 import { fromNodeProviderChain } from '@aws-sdk/credential-providers';
 
 import { EksAddonsFilter } from './schema';
 
-// import writeTxoFile from './file'
 // import { boolean } from 'zod';
 // https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/client/eks/command/DescribeAddonVersionsCommand/
 // https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/Package/-aws-sdk-client-eks/Interface/DescribeAddonVersionsCommandInput/
