@@ -21,7 +21,7 @@ import { EksAddonsFilter } from './schema';
 // https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/Package/-aws-sdk-client-eks/Interface/DescribeAddonVersionsCommandInput/
 
 // if cluster version not specified return latest cluster default
-class AwsEKSAddonDataSource {
+export class AwsEKSAddonDataSource {
 
   private readonly clients: Record<string, EKSClient> = {};
 

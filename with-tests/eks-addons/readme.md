@@ -10,7 +10,6 @@ npm install @aws-sdk/client-eks
 yarn add @aws-sdk/client-eks
 pnpm add @aws-sdk/client-eks
 npm i -g run-s
-
 ```
 
 Can be added to package.json
