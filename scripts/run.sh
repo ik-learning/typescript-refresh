@@ -14,4 +14,5 @@ echo "in: $directory"
 
 cd $directory
 
-deno run --allow-all --unstable-sloppy-imports src/app.ts
+# deno run --allow-all --unstable-sloppy-imports src/app.ts
+npm run start

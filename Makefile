@@ -19,7 +19,7 @@ cleanup: ## Cleanup folders
 	@find . -type d -name "node_modules" -prune -exec rm -rf {} \;
 # 	@find . -type f -name "*.lock" -prune -exec rm  {} \;
 
-DIRECTORY := with-tests/eks-addons
+DIRECTORY := with-tests/eks
 
 run: ## Run it
 	@scripts/run.sh $(DIRECTORY)
