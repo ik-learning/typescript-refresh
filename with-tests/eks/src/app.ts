@@ -33,7 +33,6 @@ export class AwsEKSDataSource {
 
     const input: DescribeClusterVersionsCommandInput = {
       defaultOnly: res.data.default ?? undefined,
-      includeAll: res.data?.default === undefined ? true : undefined,
     };
     console.log(input)
     const cmd = new DescribeClusterVersionsCommand(input)
