@@ -1,6 +1,8 @@
 import { type ZodEffects, type ZodString, z } from 'zod';
 import { Json } from './utils/schema-utils';
 
+// https://github.com/colinhacks/zod
+
 const stringIsBoolSchema: ZodEffects<ZodString, boolean, string> = z
   .string()
   .transform((value) => {
@@ -13,13 +15,10 @@ const stringIsBoolSchema: ZodEffects<ZodString, boolean, string> = z
     }
   });
 
-// declare const ClusterVersionStatus: {
-//   readonly extended_support: "extended-support";
-//   readonly standard_support: "standard-support";
-// };
-
 // added status
 
+// Only one of the defaultOnly, clusterVersions, includeAll or status request parameters is accepted at a time.
+// Only one of the defaultOnly, clusterVersions, includeAll or status request parameters is accepted at a time.
 export const EksFilterSchema = z.object({
   default: z.oboolean().or(stringIsBoolSchema),
   region: z.string().optional(),

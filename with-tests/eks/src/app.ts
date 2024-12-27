@@ -7,7 +7,7 @@ import {
 
 import type { GetReleasesConfig, ReleaseResult } from './utils/types';
 
-import { fromNodeProviderChain } from '@aws-sdk/credential-providers';
+// import { fromNodeProviderChain } from '@aws-sdk/credential-providers';
 
 import { EksFilter } from './schema';
 import { logger } from './utils/logger';
@@ -16,13 +16,14 @@ import { ClusterVersionInformation } from '@aws-sdk/client-eks/dist-types/models
 
 export class AwsEKSDataSource {
 
-  private readonly clients: Record<string, EKSClient> = {};
+  // private readonly clients: Record<string, EKSClient> = {};
 
   async getReleases({
     packageName: serializedFilter
   }: GetReleasesConfig): Promise<ReleaseResult | null> {
     const res = EksFilter.safeParse(serializedFilter);
     if (!res.success) {
+      console.log("UPS ERROR")
       logger.debug(
         { err: res.error, serializedFilter },
         'Error parsing eks-addons config.',
@@ -30,16 +31,15 @@ export class AwsEKSDataSource {
       return null
     }
 
-    const filter = res.data;
-
     const input: DescribeClusterVersionsCommandInput = {
-      defaultOnly: false,
-      includeAll: true,
-      maxResults: 1,
+      defaultOnly: res.data.default ?? undefined,
+      includeAll: res.data?.default === undefined ? true : undefined,
     };
+    console.log(input)
     const cmd = new DescribeClusterVersionsCommand(input)
-    const response: DescribeClusterVersionsCommandOutput = await this.getClient(filter).send(cmd)
+    const response: DescribeClusterVersionsCommandOutput = await this.getClientS().send(cmd)
     const addons: ClusterVersionInformation[] = response.clusterVersions ?? [];
+    // console.log(addons)
     const result = {
       releases: addons
         .filter((info): info is ClusterVersionInformation & { clusterVersion: string } =>
@@ -50,7 +50,7 @@ export class AwsEKSDataSource {
           status: info.status,
         }))
     }
-    console.log(addons)
+    // console.log(addons)
     return result
     // return {
     //   releases: addons
@@ -73,15 +73,19 @@ export class AwsEKSDataSource {
     // };
   }
 
-  private getClient({ region, profile }: EksFilter): EKSClient {
-    const cacheKey = `${region ?? 'default'}#${profile ?? 'default'}`;
-    if (!(cacheKey in this.clients)) {
-      this.clients[cacheKey] = new EKSClient({
-        region: region ?? undefined,
-        credentials: fromNodeProviderChain(profile ? { profile: profile } : undefined)
-      })
-    }
-    return this.clients[cacheKey];
+  // private getClient({ region, profile }: EksFilter): EKSClient {
+  //   const cacheKey = `${region ?? 'default'}#${profile ?? 'default'}`;
+  //   if (!(cacheKey in this.clients)) {
+  //     this.clients[cacheKey] = new EKSClient({
+  //       region: region ?? undefined,
+  //       credentials: fromNodeProviderChain(profile ? { profile: profile } : undefined)
+  //     })
+  //   }
+  //   return this.clients[cacheKey];
+  // }
+
+  private getClientS(): EKSClient {
+    return new EKSClient()
   }
 }
 
@@ -89,7 +93,10 @@ const eks = new AwsEKSDataSource()
 
 const input: readonly string[] = [
   '{}',
-  // '{"addonName":"amazon-cloudwatch-observability", "default":true}'
+  '{"default":true}',
+  '{"default":false}',
+  // '{"status":"standard-support", "default":true}',
+  // '{"status":"standard_support"}',
 ];
 
 input.forEach((el) => {
